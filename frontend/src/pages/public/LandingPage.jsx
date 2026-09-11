@@ -1,24 +1,24 @@
-import { FaArrowRight, FaClock, FaDotCircle, FaStar } from "react-icons/fa";
-import { CiLocationOn, CiTrophy } from "react-icons/ci";
+import { FaArrowRight } from "react-icons/fa";
+import { CiLocationOn } from "react-icons/ci";
 
 import Button from "../../components/Button";
+import { upcomingEvents } from "../../upcomingEvents";
 
-const LandingPage = () => {
+export default function LandingPage() {
   return (
     <>
       <Hero />
       <Events />
+      <Footer />
     </>
   );
-};
-
-export default LandingPage;
+}
 
 function Hero() {
   return (
-    <div className="flex flex-col justify-center text-center space-y-10 h-[70vh] px-10">
-      <div className="space-y-10 border-b border-gray-300 pb-20">
-        <h1 className="font-bold text-4xl">
+    <div className="flex flex-col justify-center items-center text-center space-y-10 h-[70vh] px-10 max-w-300 mx-auto">
+      <div className="space-y-10 border-b border-gray-300 pb-20 flex flex-col items-center">
+        <h1 className="font-bold text-4xl max-w-150">
           Where Machakos Tech Enthusiasts Build The Future
         </h1>
         <p className="text-gray-500">
@@ -54,7 +54,7 @@ function Hero() {
 
 function Events() {
   return (
-    <div className="space-y-5 px-5">
+    <div className="space-y-10 px-5 max-w-300 mx-auto">
       <div>
         <span className="text-secondary font-semibold">Connect & Learn</span>
         <h2 className="text-3xl font-semibold">Upcoming Hub Gatherings</h2>
@@ -62,107 +62,84 @@ function Events() {
           Level up your technical skills and connect with more tech students.
         </p>
       </div>
-      <div className="grid grid-cols-[1.5fr_1fr] gap-5">
-        <div className="border-2 border-neutral/50 rounded-2xl p-5 space-y-4 flex flex-col justify-between">
-          <div className="space-y-4">
-            <div className="flex justify-between">
-              <div className="bg-neutral/60 rounded-full px-5 text-xs flex justify-center items-center h-fit py-1 gap-1">
-                <FaStar /> Tech Meetup
-              </div>
-              <div className="bg-tertiary/20 border border-tertiary/30 text-tertiary font-semibold flex items-center gap-1 text-xs px-2 rounded-full">
-                <FaDotCircle /> Registration Open
-              </div>
-            </div>
-            <div className="border-b border-gray-200 pb-4">
-              <h2 className="text-xl font-semibold">
-                MTIH Tech Meetup: Scalable Web Architectures
-              </h2>
-              <p className="text-gray-500 text-xs">
-                Deep dive into microservices, MongoDB indexing, and React 19
-                concurrent patterns with industry guest speakers and Machakos
-                student core developers.
-              </p>
-            </div>
-            <div className="border-b border-gray-200 pb-4 flex gap-10">
-              <div className="flex gap-1 items-center text-sm ">
-                <FaClock className="text-secondary" />
-                20 September 2026,{" "}
-                <span className="text-gray-500 text-xs">5:00 PM EAT</span>
-              </div>
-              <div className="flex gap-1 items-center text-sm ">
-                <CiLocationOn className="text-secondary" />
-                <span className="text-gray-500 text-xs">
-                  Machakos University Amphitheatre
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-xs text-gray-600">54 Members Attending</span>
-            <Button variant="tertiary" className="px-4">
-              Register
-            </Button>
-          </div>
+      <div className="grid grid-cols-2 gap-5">
+        {upcomingEvents.map((event) => {
+          return <UpcomingEventCard key={event.id} {...event} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+function UpcomingEventCard({
+  title,
+  description,
+  type,
+  date,
+  location,
+  registration,
+}) {
+  return (
+    <div className="border rounded-lg p-5 border-gray-400 flex flex-col justify-between max-w-150">
+      <div>
+        <div className="flex justify-between">
+          <span className="text-secondary bg-secondary/20 px-2 rounded-full text-[10px] font-semibold flex items-center">
+            {type}
+          </span>
+          <span className="text-gray-500 text-xs">{date}</span>
         </div>
-        <div className="grid grid-rows-2 gap-5">
-          <div className="border rounded-lg p-5 border-gray-400">
-            <div className="flex justify-between">
-              <span className="text-secondary bg-secondary/20 px-2 rounded-full text-[10px] font-semibold flex items-center">
-                Hackathon
-              </span>
-              <span className="text-gray-500 text-xs">Oct 14-16, 2026</span>
-            </div>
-            <div>
-              <h2 className="text-lg font-semibold">
-                Annual Campus Hackathon 2026
-              </h2>
-              <p className="text-xs text-gray-500 border-b pb-3 border-gray-300">
-                48-hour continuous software build sprint. Assemble
-                cross-functional squads to tackle regional challenges in
-                Fintech, Health, and AgriTech.
-              </p>
-            </div>
-            <div className="pt-3 flex justify-between">
-              <span className="flex items-center gap-1">
-                <CiTrophy />
-                <span className="text-xs text-neutral font-semibold">
-                  Ksh 150,000 Prize Pool
-                </span>
-              </span>
-              <span className="text-secondary font-semibold text-xs flex items-center gap-1">
-                Details
-                <FaArrowRight />
-              </span>
-            </div>
-          </div>
-          <div className="border rounded-lg p-5 border-gray-400">
-            <div className="flex justify-between">
-              <span className="text-secondary bg-secondary/20 px-2 rounded-full text-[10px] font-semibold flex items-center">
-                Hackathon
-              </span>
-              <span className="text-gray-500 text-xs">Oct 02, 2026</span>
-            </div>
-            <div>
-              <h2 className="text-lg font-semibold">
-                Backend Node.js & Docker Masterclass
-              </h2>
-              <p className="text-xs text-gray-500 border-b pb-3 border-gray-300">
-                Hands-on live containerization, building multi-stage Docker builds, caching node_modules, and deploying microservices locally.
-              </p>
-            </div>
-            <div className="pt-3 flex justify-between">
-              <span className="flex items-center gap-1">
-                <CiTrophy />
-                <span className="text-xs text-neutral font-semibold">
-                  Hands-On Lab (Lab 4B)
-                </span>
-              </span>
-              <span className="text-secondary font-semibold text-xs flex items-center gap-1">
-                Details
-                <FaArrowRight />
-              </span>
-            </div>
-          </div>
+        <div>
+          <h2 className="text-lg font-semibold">{title}</h2>
+          <p className="text-xs text-gray-500">{description}</p>
+        </div>
+      </div>
+      <div className="pt-3 flex justify-between">
+        <span className="flex items-center gap-1">
+          <CiLocationOn />
+          <span
+            className={`text-xs font-semibold ${registration.open ? "text-gray-500" : "text-neutral"}`}
+          >
+            {location}
+          </span>
+        </span>
+        {registration.open ? (
+          <Button variant="tertiary">Register</Button>
+        ) : (
+          <span className="text-secondary group hover:gap-2 duration-100 font-semibold text-xs flex items-center gap-1 cursor-pointer">
+            <span className="group-hover:scale-110 duration-100">Details</span>
+            <FaArrowRight className="group-hover:scale-120 duration-100" />
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <div className="bg-primary text-white flex flex-col items-center mt-20">
+      <div className="flex flex-col items-center max-w-150 text-center py-10 space-y-4">
+        <h1 className="text-2xl font-bold">Ready to build with MTIH?</h1>
+        <p className="text-gray-500 text-sm">
+          Join our community of student engineers and tech enthusiasts building
+          skills, shipping real projects, and unlocking high-impact careers.
+        </p>
+        <Button variant="secondary" className="px-4 py-2">
+          Join MTIH Today <FaArrowRight />
+        </Button>
+      </div>
+      <div className="border-t border-gray-600 w-full flex justify-between items-center py-4 px-20">
+        <div>
+          <h2 className="font-semibold">Machakos Tech & Innovation Hub</h2>
+          <p className="text-gray-500 text-[11px]">
+            © MTIH. Advancing student developer excellence.
+          </p>
+        </div>
+        <div className="text-gray-500 text-[12px] space-x-3 [&>a]:hover:text-gray-400">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Github Hub</a>
+          <a href="#">Contact Support</a>
         </div>
       </div>
     </div>

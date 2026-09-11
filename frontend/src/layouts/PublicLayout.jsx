@@ -5,7 +5,7 @@ const PublicLayout = () => {
   return (
     <div>
       <Header />
-      <main className="relative top-15 pb-50">
+      <main className="relative top-15">
         <Outlet />
       </main>
     </div>
