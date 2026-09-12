@@ -9,7 +9,7 @@ const Header = () => {
       <div className="flex items-center gap-3">
         <span className="font-bold hidden md:inline-flex">MTIH</span>
         <RxHamburgerMenu
-          className="md:hidden"
+          className="md:hidden text-xl"
           onClick={() => setShowMenu((prev) => !prev)}
         />
         {showMenu && (

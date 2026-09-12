@@ -3,10 +3,13 @@ import Button from "../../../components/Button";
 
 export function Hero() {
   return (
-    <section id="home" className="flex flex-col justify-center items-center text-center space-y-10 h-[70vh] px-10 max-w-300 mx-auto">
+    <section
+      id="home"
+      className="flex flex-col justify-center items-center text-center space-y-10 h-[70vh] px-10 max-w-300 mx-auto"
+    >
       <div className="space-y-10 border-b border-gray-300 pb-20 flex flex-col items-center">
         <h1 className="font-bold text-4xl max-w-150">
-          Where Machakos Tech Enthusiasts Build The Future
+          Machakos Technology & Innovation Hub
         </h1>
         <p className="text-gray-500">
           Machakos Tech and Innovation Hub (MTIH) is a community of student
