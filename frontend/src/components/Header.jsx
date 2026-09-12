@@ -13,24 +13,24 @@ const Header = () => {
           onClick={() => setShowMenu((prev) => !prev)}
         />
         {showMenu && (
-          <div className="text-gray-700 text-sm [&>span]:hover:text-secondary [&>span]:cursor-pointer flex flex-col md:hidden absolute top-15.5 rounded-b-2xl bg-white border-t border-gray-300 shadow-lg left-0 animate-slide-right [&>span]:border-b [&>span]:pl-5 [&>span]:pr-2 [&>span]:border-gray-300 [&>span]:py-1.5">
-            <span>Home</span>
-            <span>About</span>
-            <span>Teams</span>
-            <span>Events</span>
-            <span>Activities</span>
-            <span className="border-none">Announcements</span>
+          <div className="text-gray-700 text-sm [&>a]:hover:text-secondary [&>a]:cursor-pointer flex flex-col md:hidden absolute top-15.5 rounded-b-2xl bg-white border-t border-gray-300 shadow-lg left-0 animate-slide-right [&>a]:border-b [&>a]:pl-5 [&>a]:pr-2 [&>a]:border-gray-300 [&>a]:py-1.5">
+            <a href="#home">Home</a>
+            <a href="">About</a>
+            <a href="#teams">Teams</a>
+            <a href="">Events</a>
+            <a href="">Activities</a>
+            <a className="border-none">Announcements</a>
           </div>
         )}
       </div>
       <div className="flex gap-10 items-center">
-        <div className="space-x-2 text-gray-700 text-sm [&>span]:hover:text-secondary [&>span]:cursor-pointer hidden md:flex">
-          <span>Home</span>
-          <span>About</span>
-          <span>Teams</span>
-          <span>Events</span>
-          <span>Activities</span>
-          <span>Announcements</span>
+        <div className="space-x-2 text-gray-700 text-sm [&>a]:hover:text-secondary [&>a]:cursor-pointer hidden md:flex">
+          <a href="">Home</a>
+          <a href="">About</a>
+          <a href="">Teams</a>
+          <a href="">Events</a>
+          <a href="">Activities</a>
+          <a href="">Announcements</a>
         </div>
         <div className="flex gap-4">
           <Button variant="primary">Login</Button>
